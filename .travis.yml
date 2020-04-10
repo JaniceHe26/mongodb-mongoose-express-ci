@@ -1,8 +1,17 @@
 language: node_js
 node_js:
-  - "stable"
+- stable
 install: npm install
 services:
-  - mongodb
+- mongodb
 script: npm test
 after_success: npm run coverage
+deploy:
+  provider: heroku
+  api_key:
+    secure: EB7TIGaKVw4Geqd9Jd5zpwTat2lc7CVaeKME3vkKTn1MMst6rZPD3Y2Mkzw9zzDS3QxK1CV+OzkgII+SJ/c+vDUTCxzxGlSFH3TJERBk60RfvSJeDwNj4lDlL1wtaebeSbOePPoSwbiB25N48yPJmWUMhI0vQEXqXewquYTmSFu+AIODB8NotV/nrSE/n5+jaXsy/I0ku/1YcfgxuvbWzerzGW8/6rPL0aKEy6CE8ntVsTOR+rFD7DoM8qwx7GaZ6SJaCWKkTThbloS6rYXn+22J/RD8zopYbRrgqHDzBOgQushcYOSbUEDK6jF8p7go+irzydpD6sFone3KeGQsgZAXt+0Gh22rxXpM6oK4vk3P/73tHtjukuW8NVtUd5QFxnU+S6/HJmHqU5XeMjn0Wd9SdssJgyjPjKYSKLhcqz/xxnJdNmHV32SemPTyfabfCIMA8HNqDcGssaT7o7pjKz2iK7L9YDbmzgP2H7kO8OlJPlD/6vUCxucOO0TAr/rnqlKbI+Auij7aR7TIeaIQaJmy17vVX50hDmn5pykRBXb28bk3lPspfq4Y4H+DvVXt4dQYwSPVDy/0WVkwlYg/xSt1nguD2boBTg1ciTh/ng8Td3viCqcgIHRxC79wKzKHLRRRpbXmri2f1pWMmw5cZgz2MHw8wjONBS6ywAyCqCw=
+  app: travis-ui
+  on:
+    repo: JaniceHe26/mongodb-mongoose-express-ci
+  run:
+    - "node seed/userProjects.js"
